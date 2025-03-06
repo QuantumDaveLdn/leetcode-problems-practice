@@ -29,47 +29,29 @@
 // Space Complexity: O(n) - storing the array of integers
 
 typedef struct {
-    int* array;
     int size;
+    int* array; // Prefix sum array
 } NumArray;
 
 NumArray* numArrayCreate(int* nums, int numsSize) {
-    // Allocate memory for the NumArray structure
-    NumArray *newNumArray = malloc(sizeof(NumArray));
-    if (newNumArray == NULL) {
-        return NULL;
+    NumArray *newArray = (NumArray*)malloc(sizeof(NumArray));
+    newArray->array = (int*)malloc((numsSize + 1) * sizeof(int));
+    newArray->array[0] = 0;
+    newArray->size = numsSize;
+    
+    // Build prefix sum array
+    for (int i = 0; i < numsSize; i++) {
+        newArray->array[i + 1] = newArray->array[i] + nums[i];
     }
     
-    // Allocate memory for the array field
-    newNumArray->array = calloc(numsSize, sizeof(int));
-    if (newNumArray->array == NULL) {
-        free(newNumArray);
-        return NULL;
-    }
-    
-    // Set the size field
-    newNumArray->size = numsSize;
-    
-    // Copy values from input array
-    memcpy(newNumArray->array, nums, sizeof(int) * numsSize);
-    
-    return newNumArray;
+    return newArray;
 }
 
 int numArraySumRange(NumArray* obj, int left, int right) {
-    // Calculate sum between left and right indices (inclusive)
-    int result = 0;
-    for (int i = left; i <= right; i++) {
-        result += obj->array[i];
-    }
-    
-    return result;
+    return obj->array[right + 1] - obj->array[left];
 }
 
 void numArrayFree(NumArray* obj) {
-    // Free the array memory
     free(obj->array);
-    
-    // Free the NumArray structure
     free(obj);
 }
