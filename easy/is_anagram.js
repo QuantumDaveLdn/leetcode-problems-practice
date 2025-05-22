@@ -16,9 +16,10 @@
 // Constraints:
 // s and t consist of lowercase English letters.
 //
-// Approach (Sorting):
-// Sort both strings and compare them directly.
-// If they are equal after sorting, they are anagrams.
+// Approach (Hash Map):
+// Create a frequency counter object to track character occurrences.
+// Increment counts for characters in s and decrement for characters in t.
+// If all values in the counter are 0, the strings are anagrams.
 //
 // Time Complexity: O(n) - linear scan of both strings
 // Space Complexity: O(k) - where k is the size of the character set (26 for lowercase English)
@@ -42,4 +43,3 @@ class Solution {
         return Object.values(count).every(el => el === 0);
     }
 }
-
