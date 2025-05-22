@@ -15,7 +15,7 @@
 // Approach:
 // Use a Set data structure to store unique elements. Since Sets only contain
 // unique values, if the array length is greater than the Set size, there must
-// be duplicates.
+// be duplicates. Optimized to a single return statement for cleaner code.
 //
 // Time Complexity: O(n) - iterate through array once to create Set
 // Space Complexity: O(n) - Set stores up to n unique elements
@@ -26,10 +26,6 @@ class Solution {
      * @return {boolean}
      */
     hasDuplicate(nums) {
-        const duplicates = new Set(nums);
-        if (nums.length > duplicates.size) {
-            return true;
-        }
-        return false;
+        return nums.length > new Set(nums).size;
     }
 }
