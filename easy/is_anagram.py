@@ -16,17 +16,22 @@
 # Constraints:
 # s and t consist of lowercase English letters.
 #
-# Approach (Sorting):
-# Sort both strings and compare them directly.
-# If they are equal after sorting, they are anagrams.
+# Approach (Hash Map):
+# Create a frequency counter object to track character occurrences.
+# Increment counts for characters in s and decrement for characters in t.
+# If all values in the counter are 0, the strings are anagrams.
 #
-# Time Complexity: O(n log n) - dominated by the sorting operation
-# Space Complexity: O(n) - for creating sorted lists
+# Time Complexity: O(n) - linear scan of both strings
+# Space Complexity: O(k) - where k is the size of the character set (26 for lowercase English)
 
 from typing import List
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        return sorted(s) == sorted(t)
-
+        hashMap = {}
+        for char in s:
+            hashMap[char] = hashMap.get(char, 0) + 1
+        for char in t:
+            hashMap[char] = hashMap.get(char, 0) - 1
         
+        return all(value == 0 for value in hashMap.values())

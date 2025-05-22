@@ -20,15 +20,26 @@
 // Sort both strings and compare them directly.
 // If they are equal after sorting, they are anagrams.
 //
-// Time Complexity: O(n log n) - dominated by the sorting operation
-// Space Complexity: O(n) - for creating new arrays during sort operations
+// Time Complexity: O(n) - linear scan of both strings
+// Space Complexity: O(k) - where k is the size of the character set (26 for lowercase English)
 class Solution {
-/**
-* @param {string} s
-* @param {string} t
-* @return {boolean}
-*/
+    /**
+     * @param {string} s
+     * @param {string} t
+     * @return {boolean}
+     */
     isAnagram(s, t) {
-        return s.split("").sort().join("") === t.split("").sort().join("");
+        const count = {};
+
+        for (let char of s) {
+            count[char] = (count[char] || 0) + 1;
+        };
+
+        for (let char of t) {
+            count[char] = (count[char] || 0) - 1;
+        };
+
+        return Object.values(count).every(el => el === 0);
     }
 }
+
