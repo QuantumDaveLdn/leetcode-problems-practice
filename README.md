@@ -1,10 +1,10 @@
-# Daily LeetCode Problem Solving
+# Daily LeetCode Solutions
 
 A repository documenting my daily LeetCode problem-solving journey.
 
 ## 📚 About
 
-This repository contains my solutions to LeetCode problems, committed daily as part of consistent coding practice. Each solution includes problem analysis, approach explanation, and implementation.
+This repository contains my solutions to LeetCode problems, committed daily as part of consistent coding practice. Solutions are tested and verified on the LeetCode platform editor before being committed to this repository.
 
 ## 📁 Structure
 
@@ -28,7 +28,7 @@ This repository contains my solutions to LeetCode problems, committed daily as p
 
 | Difficulty | Solved | Total |
 |------------|--------|-------|
-| Easy       | 3      | 800+  |
+| Easy       | 1      | 800+  |
 | Medium     | 0      | 1600+ |
 | Hard       | 0      | 600+  |
 
@@ -50,19 +50,14 @@ This repository contains my solutions to LeetCode problems, committed daily as p
 Each solution directory contains:
 
 - **solution.[ext]**: Implementation in chosen language
-- **README.md**: Problem description, approach, time/space complexity
+- Problem description, approach, time/space complexity
 - Alternative solutions when applicable
 
-## 🚀 Getting Started
-
-1. Clone the repository
-2. Navigate to specific problem solutions
-3. Each solution includes detailed explanations and complexity analysis
 
 ## 📈 Statistics
 
-- **Start Date**: 
-- **Current Streak**: 1 days
+- **Start Date**: 22/05/2025
+- **Current Streak**: 1 day
 - **Languages Used**: Python, Java, C++
 
 ---
