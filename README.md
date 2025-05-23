@@ -28,7 +28,7 @@ This repository contains my solutions to LeetCode problems, committed daily as p
 
 | Difficulty | Solved | Total |
 |------------|--------|-------|
-| Easy       | 1      | 800+  |
+| Easy       | 3      | 800+  |
 | Medium     | 0      | 1600+ |
 | Hard       | 0      | 600+  |
 
