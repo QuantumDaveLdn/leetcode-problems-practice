@@ -29,7 +29,7 @@ This repository contains my solutions to LeetCode problems, committed daily as p
 | Difficulty | Solved | Total |
 |------------|--------|-------|
 | Easy       | 4      | 800+  |
-| Medium     | 1      | 1600+ |
+| Medium     | 2      | 1600+ |
 | Hard       | 0      | 600+  |
 
 ## 🏷️ Topics Covered
