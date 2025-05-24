@@ -57,7 +57,7 @@ Each solution directory contains:
 ## 📈 Statistics
 
 - **Start Date**: 22/05/2025
-- **Current Streak**: 1 day
+- **Current Streak**: 3 day
 - **Languages Used**: Python, Java, C++
 
 ---
