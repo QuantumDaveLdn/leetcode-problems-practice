@@ -28,9 +28,9 @@ This repository contains my solutions to LeetCode problems, committed daily as p
 
 | Difficulty | Solved | Total |
 |------------|--------|-------|
-| Easy       | 4      | 800+  |
-| Medium     | 2      | 1600+ |
-| Hard       | 0      | 600+  |
+| Easy       | 5      | 800+  |
+| Medium     | 3      | 1600+ |
+| Hard       | 1      | 600+  |
 
 ## 🏷️ Topics Covered
 
@@ -58,7 +58,7 @@ Each solution directory contains:
 
 - **Start Date**: 22/05/2025
 - **Current Streak**: 3 day
-- **Languages Used**: Python, Java, C++
+- **Languages Used**: Python, Java, C++, C
 
 ---
 
