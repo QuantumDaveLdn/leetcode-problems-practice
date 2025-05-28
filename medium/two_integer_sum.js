@@ -39,30 +39,20 @@
 class Solution {
     /**
      * @param {number[]} numbers
-     * @param {number} target
+     * @param {number} target 
      * @return {number[]}
      */
     twoSum(numbers, target) {
-        let i = 0;
-        const n = numbers.length
-        let j = n - 1;
-
-        while (i < n && j >= 0) {
-            const total = numbers[i] + numbers[j];
-
-            if (total === target) {
-                return [i + 1, j + 1];
+        const numMap = {};
+        
+        for (let i = 0; i < numbers.length; i++) {
+            const complement = target - numbers[i];
+            if (numMap.hasOwnProperty(complement)) {
+                return [numMap[complement] + 1, i + 1];
             }
-
-            else if (total < target) {
-                i++;
-            }
-
-            else {
-                j--;
-            }
+            numMap[numbers[i]] = i;
         }
-
-        return [];
+        
+        throw new Error("No two numbers add up to target");
     }
 }
