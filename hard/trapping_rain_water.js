@@ -19,57 +19,40 @@
  * 1 <= n <= 2 * 10^4
  * 0 <= height[i] <= 10^5
  * 
- * Approach (Dynamic Programming):
- * Use two arrays to track the maximum height from the left and right for each bar, then calculate the trapped water as the minimum of these two minus the bar's height.
+ * Approach (Two Pointers):
+ * Use two pointers starting from both ends of the array, moving the pointer with the smaller height inward and calculating trapped water based on the minimum of the maximum heights seen so far.
  * 
- * Time Complexity: O(n) - Two passes through the array
- * Space Complexity: O(n) - For the additional arrays used
+ * Time Complexity: O(n) - Single pass through the array with two pointers
+ * Space Complexity: O(1) - Only a few variables are used
  */
-class Solution {
-    /**
-     * @param {number[]} height
-     * @return {number}
-     */
-    trap(height) {
-        const n = height.length;
-        const leftHeight = new Array(n).fill(0);
-        const rightHeight = new Array(n).fill(0);
-        const difference = new Array(n).fill(0);
-        let maxHeightLeft = 0;
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function(height) {
+    let left = 0; 
+    let right = height.length - 1;
+    let leftMax = 0;
+    let rightMax = 0;
+    let output = 0;
 
-        for (let i = 0; i < leftHeight.length; i++) {
-            if (i === 0) {
-                leftHeight[i] = 0;
-                continue;
+    while (left < right) {
+        if (height[left] < height[right]) {
+            if (height[left] >= leftMax) {
+                leftMax = height[left];
+            } else {
+                output += leftMax - height[left];
             }
-            maxHeightLeft = Math.max(height[i - 1], maxHeightLeft);
-            leftHeight[i] = maxHeightLeft;
-        }
-        console.log(leftHeight);
-
-        let maxHeightRight = 0;
-
-        for (let i = n - 1; i >= 0; i--) {
-            if (i === n - 1) {
-                rightHeight[i] = 0;
-                continue;
+            left++;
+        } else {
+            if (height[right] >= rightMax) {
+                rightMax = height[right];
+            } else {
+                output += rightMax - height[right];
             }
-            maxHeightRight = Math.max(height[i + 1], maxHeightRight);
-            rightHeight[i] = maxHeightRight;
+            right--;
         }
-        console.log(rightHeight);
-
-        for (let i = 0; i < difference.length; i++) {
-            difference[i] = Math.min(leftHeight[i], rightHeight[i]);
-        }
-        console.log(difference);
-
-        let output = 0;
-        for (let i = 0; i < height.length; i++) {
-            output += difference[i] - height[i] < 0 ? 0 : difference[i] - height[i];
-        }
-
-        return output;
     }
 
-}
+    return output;
+};
