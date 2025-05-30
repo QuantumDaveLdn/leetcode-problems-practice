@@ -25,6 +25,8 @@
 # Time Complexity: O(n) - each number is visited at most twice
 # Space Complexity: O(n) - set storage
 
+from typing import List
+
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         longest = 0

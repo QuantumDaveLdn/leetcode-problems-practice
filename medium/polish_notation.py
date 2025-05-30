@@ -1,6 +1,8 @@
 # Evaluate Reverse Polish Notation - Medium
 # 
 # Problem Description:
+
+from typing import List
 # You are given an array of strings `tokens` that represents a valid arithmetic expression
 # in Reverse Polish Notation. Evaluate and return the integer that represents the 
 # evaluation of the expression.
