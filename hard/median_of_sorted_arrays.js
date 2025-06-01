@@ -16,51 +16,52 @@
 // -10^6 <= nums1[i], nums2[i] <= 10^6
 //
 // Approach:
-// Merge two sorted arrays using two-pointer technique, then find median.
-// This approach prioritizes simplicity over optimal time complexity.
+// Use binary search to find the correct partition of both arrays.
+// This is the optimal solution with logarithmic time complexity.
 //
-// Time Complexity: O(m + n) - single pass through both arrays
-// Space Complexity: O(m + n) - additional array to store merged result
+// Time Complexity: O(log(min(m, n))) - binary search on the smaller array
+// Space Complexity: O(1) - constant space usage
 
-/**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number}
- */
-var findMedianSortedArrays = function(nums1, nums2) {
-    let i = 0; 
-    let j = 0; 
-    const merged = [];
-    const n1 = nums1.length;
-    const n2 = nums2.length;
-
-    while (i < n1 && j < n2) {
-        if (nums1[i] < nums2[j]) {
-            merged.push(nums1[i]);
-            i++;
-        } else {
-            merged.push(nums2[j]);
-            j++;
+class Solution {
+    /**
+     * @param {number[]} nums1
+     * @param {number[]} nums2
+     * @return {number}
+     */
+    findMedianSortedArrays(nums1, nums2) {
+        if (nums1.length > nums2.length) {
+            const temp = nums1;
+            nums1 = nums2;
+            nums2 = temp;
         }
-    }
-    
-    while (i < n1) {
-        merged.push(nums1[i]);
-        i++; 
-    }
+        
+        let left = 0;
+        let right = nums1.length;
+        
+        while (left <= right) {
+            let i = Math.floor((left + right) / 2);
+            let j = Math.floor((nums1.length + nums2.length + 1) / 2 - i);
 
-    while (j < n2) {
-        merged.push(nums2[j]);
-        j++;
+            const aLeft = i === 0 ? -Infinity : nums1[i - 1];
+            const aRight = i === nums1.length ? Infinity : nums1[i];
+            const bLeft = j === 0 ? -Infinity : nums2[j - 1];
+            const bRight = j === nums2.length ? Infinity : nums2[j];
+
+            if (aLeft <= bRight && bLeft <= aRight) {
+                if ((nums1.length + nums2.length) % 2 !== 0) {
+                    return Math.max(aLeft, bLeft);
+                } else {
+                    return (Math.max(aLeft, bLeft) + Math.min(aRight, bRight)) / 2;
+                }
+            } else {
+                if (aLeft > bRight) {
+                    right = i - 1;
+                } else {
+                    left = i + 1;
+                }
+            }
+        }
+        
+        return -1;
     }
-
-    const length = merged.length;
-    const mid = Math.floor(length / 2);
-
-    if (length % 2 !== 0) {
-        return merged[mid];
-    } else {
-        return (merged[mid] + merged[mid - 1]) / 2;
-    }
-
-};
+}
